@@ -1,0 +1,213 @@
+.mrResult-container{
+  width:100%;
+  height:100%;
+  box-sizing: border-box;
+  position: relative;
+  background:url('../../assets/img/jgy_bj.png') no-repeat;
+  background-size:100% 100%;
+}
+// 分享图片
+.mrResult-wrapper-share{
+  box-sizing:border-box;
+  position: absolute;
+  z-index: -1;
+  top:0;left:0;right:0;
+  background:url('../../assets/img/tc_bj.png') no-repeat;
+  background-size:100% 100%;
+  .mrResult-self{
+    padding:64px 20px 20px;
+    .mrResult-seft-box{
+      width:100%;
+      min-height:196px;
+      background:url('../../assets/img/tc_grxx.png') no-repeat;
+      background-size:100% 100%;
+      padding:42px 35px 20px;
+      line-height: 1.5;
+      p{
+        color:#cefeff;
+        font-size:30px;
+        span{color:#ffcc00;}
+      }
+    }
+  }
+  .mrResult-match{
+    .match-list{
+      overflow: hidden;
+      .match-item{
+        padding: 20px 20px;
+        .item-title{
+          font-size:36px;
+          color:#ffffff;
+          text-align: center;
+          margin-bottom:20px;
+          &::before,&::after{
+            content:'';
+            width:20px;
+            height:26px;
+            display: inline-block;
+            background:url('../../assets/img/jgy_xx.png') no-repeat;
+            background-size:100% 100%;
+          }
+          &::before{margin-right:10px;}
+          &::after{margin-left:10px;}
+        }
+        .match-item-box{
+          min-height:243px;
+          background:url('../../assets/img/tc_zwmg.png') no-repeat;
+          background-size:100% 100%;
+          padding:27px 40px 20px;
+          .item-info{
+            display: flex;
+            align-items: center;
+            .item-info-aviat{
+              width:130px;
+              height:130px;
+              overflow: hidden;  
+              background: url('../../assets/img/jgy_txbk.png') no-repeat;
+              background-size:100% 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-right:20px;
+              img{
+                border-radius: 50%;
+                width:115px;
+                height:115px;
+                border:2px solid #17f7fc;
+                object-fit: cover;
+              }
+            }
+            .item-info-list{
+              p{
+                font-size:30px;
+                color:#cefeff;
+                margin-bottom:6px;
+                span{color:#ffcc00;}
+              }
+            }
+          }
+          .match-info-txt{
+            font-size:26px;
+            color:#cefeff;margin-top:20px;
+          }
+        }
+      }
+    }
+  }
+  .share-info-wrap{
+    color:#ffffff;
+    .share-info{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding:20px 20px 20px;
+      .share-info-list{
+        font-size:26px;
+        p{
+          margin-bottom:10px;
+          &:nth-last-child(1){margin-bottom:0px;}
+        }
+      }
+      .share-info-erweima{
+        width:130px;
+        height:130px;
+        img{width:100%;}
+      }
+    }
+    .share-info-small{
+      margin-bottom:20px;
+      font-size:20px;
+      text-align:center;
+    }
+  }
+}
+// 弹窗
+.result-popup{
+  display: none;
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.8);
+  position: fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  top:0;
+  .result-popup-wrap{
+    position: absolute;
+    width:88%;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    overflow: hidden;
+    img{width:100%;}
+    .result-popup-close{
+      width:44px;
+      height:44px;
+      position: absolute;
+      top:12px;
+      right:12px;
+      background:url('../../assets/img/tc_close.png') no-repeat;
+      background-size:100% 100%;
+      z-index: 1;
+    }
+    .result-popup-share-wrap{
+      position: absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      background-image:url('../../assets/img/tc_bj.png');
+      background-repeat:no-repeat;
+      background-position:center bottom;
+      background-size: cover;
+      padding:30px 0 20px;
+      .share-box{
+        text-align: center;
+        margin-bottom:30px;
+        .share-txt{
+          font-size:30px;
+          color:#ffffff;
+          vertical-align: middle;
+          margin-right:20px;
+        }
+        .share-item{
+          width:80px;
+          height:80px;
+          border-radius: 50%;
+          vertical-align: middle;
+          display: inline-block;
+          
+          &.share-wx{
+            background:url('../../assets/img/tc_wx.png') no-repeat;
+            background-size:100% 100%;
+            margin-right:60px;
+          }
+          &.share-wxpyq{
+            background:url('../../assets/img/tc_pyq.png') no-repeat;
+            background-size:100% 100%;
+          }
+        }
+      }
+      .share-small{
+        font-size:24px;
+        color:#ffffff;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.opacityShow-enter{
+  opacity: 0;
+}
+.opacityShow-enter-active{
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+.opacityShow-exit{
+  opacity: 1;
+}
+.opacityShow-exit-active{
+  opacity: 0;
+  transition: opacity 0.4s;
+}

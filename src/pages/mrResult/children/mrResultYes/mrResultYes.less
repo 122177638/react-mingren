@@ -1,0 +1,90 @@
+.mrResult-wrapper{
+  width:100%;
+  height:100%;
+  overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
+  .mrResult-self{
+    padding:48px 20px 30px;
+    .mrResult-seft-box{
+      width:100%;
+      min-height:196px;
+      background:url('../../../../assets/img/jgy_bj01.png') no-repeat;
+      background-size:100% 100%;
+      padding:42px 35px 20px;
+      line-height: 1.5;
+      p{
+        color:#cefeff;
+        font-size:30px;
+        span{color:#ffcc00;}
+      }
+    }
+  }
+  .mrResult-match{
+    .match-list{
+      overflow: hidden;
+      .match-item{
+        padding: 30px 20px;
+        .match-item-box{
+          min-height:497px;
+          background:url('../../../../assets/img/jgy_bj02.png') no-repeat;
+          background-size:100% 100%;
+          padding:27px 40px 40px;
+          .item-title{
+            font-size:36px;
+            color:#ffffff;
+            text-align: center;
+            &::before,&::after{
+              content:'';
+              width:20px;
+              height:26px;
+              display: inline-block;
+              background:url('../../../../assets/img/jgy_xx.png') no-repeat;
+              background-size:100% 100%;
+            }
+            &::before{margin-right:10px;}
+            &::after{margin-left:10px;}
+          }
+          .item-info{
+            display: flex;
+            align-items: center;
+            margin-top:40px;
+            .item-info-aviat{
+              width:130px;
+              height:130px;
+              overflow: hidden;  
+              background: url('../../../../assets/img/jgy_txbk.png') no-repeat;
+              background-size:100% 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-right:20px;
+              img{
+                border-radius: 50%;
+                width:115px;
+                height:115px;
+                border:2px solid #17f7fc;
+                object-fit: cover;
+              }
+            }
+            .item-info-list{
+              p{
+                font-size:30px;
+                color:#cefeff;
+                margin-bottom:6px;
+                span{color:#ffcc00;}
+              }
+            }
+          }
+          .match-info-txt{
+            font-size:26px;color:#cefeff;margin-top:30px;
+          }
+        }
+      }
+    }
+  }
+  .share-match-info{
+    height:156px;
+    background:url('../../../../assets/img/jgy_btn.png') no-repeat;
+    background-size:100% 100%;
+  }
+}

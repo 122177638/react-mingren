@@ -1,0 +1,183 @@
+.MrResultEnd-container{
+  width: 100%;
+  height:100%;
+}
+.MrResultEnd-wrapper{
+  width:100%;
+  height:100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling:touch;
+  width:100%;
+  height:100%;
+  background: url('../../assets/img/xpjgy_bj.png') no-repeat;
+  background-size:100% 100%;
+  .mrResult-self{
+    padding:48px 20px 30px;
+    .mrResult-seft-box{
+      width:100%;
+      min-height:196px;
+      background:url('../../assets/img/jgy_bj01.png') no-repeat;
+      background-size:100% 100%;
+      padding:42px 35px 20px;
+      line-height: 1.5;
+      p{
+        color:#cefeff;
+        font-size:30px;
+        span{color:#ffcc00;}
+      }
+    }
+  }
+  .MrResultEnd-content{
+    padding:20px 20px;
+    .item-title{
+      font-size:36px;
+      color:#ffffff;
+      text-align: center;
+      padding:0 40px;
+      margin-bottom:20px;
+      &::before,&::after{
+        content:'';
+        width:20px;
+        height:26px;
+        display: inline-block;
+        background:url('../../assets/img/jgy_xx.png') no-repeat;
+        background-size:100% 100%;
+      }
+      &::before{margin-right:10px;}
+      &::after{margin-left:10px;}
+    }
+    .MrResultEnd-wrap{
+      padding:30px;
+      background:url('../../assets/img/xpjgy_bj02.png') no-repeat;
+      background-size:100% 100%;
+      font-size: 30px;
+      color:#cefeff;
+      position: relative;
+      .MrResultEnd-opacity{
+        position: absolute;
+        bottom:10px;
+        left:20px;
+        right:20px;
+        height:120px;
+        background:linear-gradient(top,rgba(12,52,99,0.1) 5%,rgba(12,52,99,0.5) 30%,rgba(12,52,99,1) 60%);
+        .lock{
+          width:120px;
+          height:120px;
+          background:url('../../assets/img/xpjgy_js.png') no-repeat;
+          background-size:100% 100%;
+          position: absolute;
+          bottom:-60px;
+          left:50%;
+          margin-left:-60px;
+        }
+      }
+      &.wuxing{
+        color: #ffcc00;
+        font-size: 30px;
+        .detail_info { margin: 0 10px;}
+        .base_info, .detail_info {padding: 10px 0;border-bottom: 1px dashed #ffffff;}
+        .base_info span, .main_info dl dd .num, .main_info dl dt, .main_info li div span {color: #cefeff;}
+        .detail_info, .infos, .main_info, .next_step {font-size: 30px;}
+        .detail_info li {height: auto;overflow: hidden;line-height: 20px;padding: 8px 0;}
+        .detail_info .info_head {text-align: left; color: #cefeff;width: 12%;}
+        .detail_info .info_heads {width: 22%;text-align: center;}
+        .detail_info span {
+            line-height: 40px;
+            display: block;
+            width: 22%;
+            float: left;
+            text-align: center;
+        }
+        .detail_info .info_ts {width: 12%;}
+        .main_info {padding: 10px 0;margin: 0 10px;}
+        .detail_info .m_ts_list, .main_info li {line-height: 40px;}
+        .main_info li {height: 40px;}
+        .main_info li div {width: 37%;float: left;}
+        .main_info li .ts { width: 60%;}
+        .main_info li .tss { width: 30%;}
+        .main_info li div.m_w_80 {width: 200px;  }
+        .main_info li div.m_w_bai { width: 100%;}
+        .main_info li .ts_a { width: 100%;}
+        .clear:after {
+            display: block;
+            clear: both;
+            visibility: hidden;
+            height: 0;
+            overflow: hidden;
+            content: ".";
+        }
+        .main_info dl {
+            margin-top: 10px;
+            overflow: hidden;
+            border: 1px solid #ffffff;
+            height: 170px;
+        }
+        .main_info dl dt {
+            float: left;
+            width: 10%;
+            height: 81px;
+            padding: 20px 10px;
+            text-align: center;
+            writing-mode: lr-tb;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+        .main_info dl dd {float: left;width: 88%; height: 81px;}
+        .main_info dl dd .num {height: auto;overflow: hidden;width: 110%;}
+        .main_info dl dd .word {height: auto;overflow: hidden;width: 110%;}
+        .main_info dl dd .num span, .main_info dl dd .word span {
+            border-left: 1px solid #ffffff;
+            border-bottom: 1px solid #ffffff;
+            box-sizing: border-box;
+            text-align: center;
+            float: left;
+            display: block;
+        }
+        .main_info dl dd .num span {
+            height: 70px;
+            width: 11.8%;
+            padding: 0 5px;
+            line-height: 70px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+        .main_info dl dd .word span {
+            height: 100px;
+            width: 11.8%;
+            padding: 2px;
+            color: #ffcc00;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+        }
+      }
+      &.wuge{
+        color:#cefeff;
+        font-size: 30px;
+        p{line-height: 1.5;}
+        .sizeColor{color:#ffcc00;}
+        .hudong{margin-top:20px;}
+      }
+      &.yunshi{
+        font-size: 30px;
+        .mouth-title{
+          height:30px;
+          line-height: 30px;
+          color:#ffcc00;
+          margin:30px auto;
+          .mouth-txt{
+
+          }
+        }
+      }
+    }
+    .MrResultEnd-point{
+      font-size:30px;
+      color:#ffcc00;
+      text-align:center;
+      margin-top:70px;
+    }  
+  }
+}
+
+
