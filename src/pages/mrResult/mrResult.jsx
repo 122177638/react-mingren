@@ -98,7 +98,7 @@ export default class MrHome extends Component {
             <div className="mrResult-seft-box">
               <p>用户姓名： <span>{this.state.userData.username}</span></p>
               <p>你的生辰八字为： <span>{this.state.userData.bazi.join(' ')}</span></p>
-              <p>你的紫薇命宫为： <span>{Object.keys(this.state.userData.ziwei).map((item)=>{ return this.state.userData.ziwei[item]+ ' '})}</span></p>
+              <p>你的紫微命宫为： <span>{Object.keys(this.state.userData.ziwei).map((item)=>{ return this.state.userData.ziwei[item]+ ' '})}</span></p>
             </div>
           </div>
           <div className="mrResult-match">
@@ -125,13 +125,13 @@ export default class MrHome extends Component {
                 this.state.zwData && (
                   <li className="match-item">
                     <div className="match-item-box">
-                      <h2 className="item-title">与你紫薇命宫匹配度最高的名人</h2>
+                      <h2 className="item-title">与你紫微命宫匹配度最高的名人</h2>
                       <div className="item-info">
                         <div className="item-info-aviat"><img src={this.state.zwData.imgUrl} alt=""/></div>
                         <div className="item-info-list">
                           <p><span>{this.state.zwData.name}</span></p>
                           {/* <p>生日：<span>{}</span></p> */}
-                          <p>紫薇命宫：<span>{this.state.zwData.ziwei}</span></p>
+                          <p>紫微命宫：<span>{this.state.zwData.ziwei}</span></p>
                         </div>
                       </div>
                       <p className="match-info-txt">{this.state.zwData.textStr}</p>

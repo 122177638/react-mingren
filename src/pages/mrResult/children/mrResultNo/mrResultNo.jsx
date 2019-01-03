@@ -18,7 +18,7 @@ export default class MrResultNo extends Component{
         <div className="mrResultNo-top">
           <div className="mrResultNo-top-box">
             <h3>尊敬的<span>{this.props.userData.username}先生</span></h3>
-            <p>非常抱歉，目前系统内无法匹配到和您的八字或者紫薇命盘相似的历史名人，我们会继续录入更多名人伟人的八字精准批注，相信下次一定可以寻找到和您八字相匹配的名人伟人！</p>
+            <p>非常抱歉，目前系统内无法匹配到和您的八字或者紫微命盘相似的历史名人，我们会继续录入更多名人伟人的八字精准批注，相信下次一定可以寻找到和您八字相匹配的名人伟人！</p>
             <p>您可以稍等几天后再来测试，或者输入亲朋好友的生辰八字，筛选八字相同的历史名人！</p>
             <p>感谢您对知命的支持！</p>
             <span className="box-sign"></span>
