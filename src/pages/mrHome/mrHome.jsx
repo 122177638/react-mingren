@@ -18,11 +18,14 @@ export default class MrHome extends Component {
       if(sessionStorage) {
         sessionStorage.setItem('uid',prames.uid)
       }else{
-        alert('浏览器不支持localStorage')
+        alert('浏览器不支持sessionStorage')
       }
     }
     if(prames &&　prames.csNumber){
       sessionStorage.setItem('csNumber',prames.csNumber)
+    }
+    if(prames &&　prames.channel){
+      sessionStorage.setItem('channel',prames.channel)
     }
   }
   componentDidMount(){
@@ -37,7 +40,8 @@ export default class MrHome extends Component {
         share_description: '了解你八字背后的秘密，发现你不知道的自己，快来参与吧',
         thumb: 'https://hy.yixueqm.com/zhiming/Public/images/public/19.png'
       },'https://hy.yixueqm.com/zhiming/index.php/Home-InterfaceMr-indexMr',()=>{
-  
+        // 分享统计
+        API.countShare({csName:'MR37',channel:sessionStorage.getItem('channel')}).then(()=>{})
       })
     })
   }

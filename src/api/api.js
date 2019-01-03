@@ -46,6 +46,28 @@ class API extends Server{
     }
   }
   /**
+   * 用途：微信分享
+   * @method post  
+   */
+  async countShare(params = {}){
+    try{
+      let result = await this.axios('post', '/Home-Index-wxShare', params); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '获取微信信息失败',
+          response: result,
+          data: params,
+          url: '/Home-Index-wxShare',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
+  /**
    * 用途：性格缺点
    * @method post 
    */

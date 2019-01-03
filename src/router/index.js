@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { HashRouter, Switch, Route, Redirect, BrowserRouter as Router } from 'react-router-dom';
-import asyncComponent from '@/utils/asyncComponent';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+// import asyncComponent from '@/utils/asyncComponent';
 
-// import mrHome from "@/pages/mrHome/mrHome";
-// const mrHome = asyncComponent(() => import("@/pages/mrHome/mrHome"));
-// const mrDatum = asyncComponent(() => import("@/pages/mrDatum/mrDatum"));
 // const mrResult = asyncComponent(() => import("@/pages/mrResult/mrResult"));
 import mrHome from "@/pages/mrHome/mrHome";
 import mrDatum from "@/pages/mrDatum/mrDatum";

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { openScroll } from '../../utils/mixin'
 import API from '../../api/api'
+import { wxShare } from '../../utils/lib'
 import './mrResultPay.less'
 
 export default class MrResultPay extends Component{
@@ -26,6 +27,18 @@ export default class MrResultPay extends Component{
       params.push(item + '=' + userInfo[item])
     })
     window.location.href = `https://www.yixueqm.com/zhiming/index.php/Home-InterfaceMr-placeOrder?${params.join('&')}`
+  }
+  wxShareEvent(){
+    API.wxShare({shareUrl:window.location.href.split('#/')[0]}).then((data)=>{
+      wxShare(data,{
+        share_title: '名人八字大数据库',
+        share_description: '了解你八字背后的秘密，发现你不知道的自己，快来参与吧',
+        thumb: 'https://hy.yixueqm.com/zhiming/Public/images/public/19.png'
+      },'https://hy.yixueqm.com/zhiming/index.php/Home-InterfaceMr-indexMr',()=>{
+        // 分享统计
+        API.countShare({csName:'MR37',channel:sessionStorage.getItem('channel')}).then(()=>{})
+      })
+    })
   }
   render(){
     return(
