@@ -46,7 +46,7 @@ class API extends Server{
     }
   }
   /**
-   * 用途：微信分享
+   * 用途：分享统计
    * @method post  
    */
   async countShare(params = {}){
@@ -56,7 +56,7 @@ class API extends Server{
         return result;
       }else{
         let err = {
-          tip: '获取微信信息失败',
+          tip: '分享统计失败',
           response: result,
           data: params,
           url: '/Home-Index-wxShare',
@@ -104,6 +104,52 @@ class API extends Server{
           response: result,
           data: params,
           url: '/Home-InterfaceMr-jieguoye',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
+  /** 
+   * 用途: 上传分享图片
+   * @method post 
+   */
+  async fileImg(params = {}){
+    try{
+      params.baseURL = 'https://hy.yixueqm.com/ziweidoushu/index.php/';
+      let result = await this.axios('post', '/Home/Humanjb/imgSave', params); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '上传失败',
+          response: result,
+          data: params,
+          url: '/Home/Humanjb/imgSave',
+        }
+        throw err;
+      }
+    }catch(err){
+      throw err;
+    }
+  }
+  /** 
+   * 用途: 是否分享成功
+   * @method post 
+   */
+  async nativeIsshare(params = {}){
+    try{
+      params.baseURL = 'https://hy.yixueqm.com/ziweidoushu/index.php/';
+      let result = await this.axios('post', '/Home/Humanjb/shareSelect', params); 
+      if(result){
+        return result;
+      }else{
+        let err = {
+          tip: '查询失败',
+          response: result,
+          data: params,
+          url: '/Home/Humanjb/shareSelect',
         }
         throw err;
       }

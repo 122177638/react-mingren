@@ -6,7 +6,8 @@ import MrResultYes from './children/mrResultYes/mrResultYes'
 import API from '../../api/api'
 import Loading from '../../components/loading/loading'
 import SharePonit from '../../components/sharePonit/sharePonit'
-import { wxShare } from '../../utils/lib'
+import { wxShare, isWeixin } from '../../utils/lib'
+import { uuid } from '../../utils/mixin'
 import './mrResult.less'
 
 export default class MrHome extends Component {
@@ -54,7 +55,7 @@ export default class MrHome extends Component {
   }
   componentDidMount(){
     console.log('componentDidMount');
-    this.wxShareEvent()
+    this.sid = sessionStorage.getItem('sid')?sessionStorage.getItem('sid') : sessionStorage.setItem('sid',uuid(16,16,'IMG'))
   }
   canvasHtml(){
     html2canvas(this.canvasNode,{
@@ -64,27 +65,77 @@ export default class MrHome extends Component {
       let imageBase64 = canvas.toDataURL("image/png");
       document.querySelector('#resultImg').src= imageBase64;
       this.canvasNode.style.display = 'none';
-      this.setState({loadShow:false})
+      // 上传分享图片
+      let filePrames = {
+        imgBase64: imageBase64,
+        sid: this.query.birthday
+      }
+      API.fileImg(filePrames).then((data)=>{
+        if(data){
+          this.shareImg = data;
+          this.wxShareEvent(data)
+        }else{
+          alert('上传分享图失败')
+        }
+        this.setState({loadShow:false})
+      })
     })
   }
-  wxShareEvent(){
+  wxShareEvent(img){
     API.wxShare({shareUrl:window.location.href.split('#/')[0]}).then((data)=>{
       wxShare(data,{
         share_title: '名人八字大数据库',
         share_description: '了解你八字背后的秘密，发现你不知道的自己，快来参与吧',
-        thumb: 'https://hy.yixueqm.com/zhiming/Public/images/public/19.png'
+        thumb: img
       },'https://hy.yixueqm.com/zhiming/index.php/Home-InterfaceMr-indexMr',()=>{
-        // 分享统计
-        API.countShare({csName:'MR37',channel:sessionStorage.getItem('channel')}).then(()=>{})
-        this.props.history.push({pathname:'/mrResultPay'})
+        this.shareSucceed();
       })
     })
   }
   openPopup(){
     this.setState({popupShow: !this.state.popupShow})
   }
-  shareShow(){
-   this.setState({isShare: !this.state.isShare})
+  shareShow(shareType){
+    let u = navigator.userAgent;
+    let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    let shareParams = {
+      title: '名人八字大数据库',
+      content: '了解你八字背后的秘密，发现你不知道的自己，快来参与吧',
+      imgurl: this.shareImg,
+      sharetype: shareType,
+      shareMode: 9,
+      qid: this.sid
+    }
+    if(isWeixin()){
+      this.setState({isShare: !this.state.isShare})
+    }else if(isAndroid){
+      android.share(JSON.stringify(shareParams)) // eslint-disable-line
+      setTimeout(()=>{
+        this.shareSucceed();
+      },1000)
+    }else if(isiOS){
+      window.webkit.messageHandlers.share.postMessage(JSON.stringify(shareParams));// eslint-disable-line
+      setTimeout(()=>{
+        this.shareSucceed();
+      },1000)
+    }
+  }
+  pollingShare(){
+    this.timer = setInterval(()=>{
+      API.nativeIsshare({sid: this.sid}).then((data)=>{
+        if(data.code == 1){
+          clearInterval(this.timer);
+          this.timer = null;
+          this.shareSucceed();
+        }
+      })
+    },500)
+  }
+  shareSucceed(){
+    // 分享统计
+    API.countShare({csName:'MR37',channel:sessionStorage.getItem('channel')}).then(()=>{})
+    this.props.history.push({pathname:'/mrResultPay'})
   }
   render(){
     return (
@@ -168,8 +219,8 @@ export default class MrHome extends Component {
               <div className="result-popup-share-wrap">
                 <div className="share-box">
                   <span className="share-txt">分享到：</span>
-                  <span className="share-item share-wx" onClick={this.shareShow.bind(this)}></span>
-                  <span className="share-item share-wxpyq" onClick={this.shareShow.bind(this)}></span>
+                  <span className="share-item share-wx" onClick={this.shareShow.bind(this,'1')}></span>
+                  <span className="share-item share-wxpyq" onClick={this.shareShow.bind(this,'2')}></span>
                 </div>
                 <p className="share-small">(长按保存图片)</p>
               </div>

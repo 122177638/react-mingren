@@ -1,4 +1,5 @@
 import axios from 'axios';
+import qs from 'Qs';
 import envconfig from '@/envconfig/envconfig';
 /**
  * 主要params参数
@@ -22,15 +23,20 @@ export default class Server {
       let _option = {
         method,
         url,
-        baseURL: envconfig.baseURL,
+        baseURL: params.baseURL || envconfig.baseURL,
         timeout: 30000,
-        params: params,
+        params: null,
         data: null,
         headers: null,
         // withCredentials: true, //是否携带cookies发起请求
         validateStatus:(status)=>{
             return status >= 200 && status < 300;
         },
+      }
+      if(method.toUpperCase() === 'POST'){
+        _option.data = qs.stringify(params);
+      }else{
+        _option.params = params;
       }
       axios.request(_option).then(res => {
         resolve(res.data)
